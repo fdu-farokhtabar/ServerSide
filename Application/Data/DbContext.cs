@@ -6,7 +6,7 @@ namespace Application.Data
 {
     public class Context : DbContext
     {
-        public static string ConnectionString { get; set; } = "Host=localhost;Port=5433;Database=KianUsa;Username=admin;Password=123456";
+        public static string ConnectionString { get; set; } = "Host=localhost;Port=5433;Database=FurDb;Username=admin;Password=123456";
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }

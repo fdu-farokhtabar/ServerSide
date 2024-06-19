@@ -31,6 +31,7 @@ namespace Application.Data.Config
 
             builder.Property(x => x.Security).IsRequired(false).HasMaxLength(2000);
             builder.Property(x => x.Order).IsRequired(true).HasDefaultValue(0);
+            builder.Property(x => x.OrderInShop).IsRequired(true).HasDefaultValue(0);
             builder.Property(x => x.IsGroup).IsRequired(true);
 
             builder.Property(x => x.Tags).IsRequired(false);
@@ -46,6 +47,7 @@ namespace Application.Data.Config
 
             builder.HasIndex(x => x.Slug).IsUnique();
             builder.HasIndex(x => x.Order);
+            builder.HasIndex(x => x.OrderInShop);
 
         }
     }
