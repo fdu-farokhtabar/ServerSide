@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+
+import "google/protobuf/empty.proto";
+
+message CategoryResponseMessage{
+        string Id = 1;
+        string Name = 2;
+        string Slug = 3;
+        string ShortDescription = 4;
+        string Description = 5;        
+        repeated CategoryParameterResponseMessage Parameters = 6;
+        repeated CategoryParameterResponseMessage Features = 7;
+        repeated ChildrenCategoryResponseMessage Children = 8;
+        int32 Order = 9;
+        repeated string ImagesUrl = 10;
+        repeated string Tags = 11;
+        repeated string Securities = 12;
+}
+
+message CategoriesResponseMessage{
+    repeated CategoryResponseMessage Categories = 1;
+}
+
+message CategoryShortDataResponseMessage{
+        string Id = 1;
+        string Name = 2;
+        string Slug = 3;
+        string ShortDescription = 4;
+        int32 Order = 5;
+}
+message CategoriesShortDataResponseMessage{
+    repeated CategoryShortDataResponseMessage Categories = 1;
+}
+
+message ChildrenCategoryResponseMessage{
+    string Id = 1;
+    string Slug = 2;
+    int32 Order = 3;
+}
+
+message CategoryParameterResponseMessage{
+    string Name = 1;
+    string Value = 2;
+}
+message CategoryByIdRequestMessage{
+    string Id = 1;
+}
+message CategoryBySlugRequestMessage{
+    string Slug = 1;
+}
+message CategoryByTagsRequestMessage{
+    repeated string Tags = 1;
+}
+service CategorySrv{
+    rpc GetAll(google.protobuf.Empty) returns (CategoriesResponseMessage);
+    rpc GetAllWithChildren(google.protobuf.Empty) returns (CategoriesResponseMessage);
+    rpc GetAllShortData(google.protobuf.Empty) returns (CategoriesShortDataResponseMessage);
+    rpc GetById(CategoryByIdRequestMessage) returns (CategoryResponseMessage);
+    rpc GetBySlug(CategoryBySlugRequestMessage) returns (CategoryResponseMessage);
+    rpc GetBySlugWithChildren(CategoryBySlugRequestMessage) returns (CategoriesResponseMessage);
+    rpc GetByFilter(CategoryByTagsRequestMessage) returns (CategoriesResponseMessage);
+    rpc GetFirst(google.protobuf.Empty) returns (CategoryResponseMessage);
+}
+
