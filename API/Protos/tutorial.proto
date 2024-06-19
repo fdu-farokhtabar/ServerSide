@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Protos";
+import "google/protobuf/empty.proto";
+
+message TutorialResponseMessage
+{
+	int32  Id = 1;
+	string Title = 2;
+	string Abstract = 3;
+	string Description = 4;
+	repeated string VideoUrls = 5;
+	repeated string ImageUrls = 6;
+}
+message TutorialsResponseMessage
+{
+	repeated TutorialResponseMessage Tutorials = 1;
+}
+service TutorialSrv{
+	rpc GetAll(google.protobuf.Empty) returns (TutorialsResponseMessage);
+}
