@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\account.proto" />
+    <None Remove="Protos\catalog.proto" />
+    <None Remove="Protos\email.proto" />
+    <None Remove="Protos\importdata.proto" />
+    <None Remove="Protos\order.proto" />
+    <None Remove="Protos\po.proto" />
+    <None Remove="Protos\product.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\account.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\catalog.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\email.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\importdata.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\order.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\po.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\product.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.45.0" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.45.0" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.30" />
+    <PackageReference Include="Hangfire.InMemory" Version="0.3.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.17" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Exceptions" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.PostgreSQL" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Catalogs\" />
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+</Project>

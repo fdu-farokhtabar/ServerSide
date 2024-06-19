@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+
+message ByFilesResponse{
+	bool IsSuccessful = 1;
+	string Message= 2;
+}
+message ByFilesRequest{
+	string Username = 1;
+	string Password = 2;
+}
+service ImportDataSrv{
+	rpc ByFiles(ByFilesRequest) returns (ByFilesResponse);
+	rpc PoDataFullByExcelFile(ByFilesRequest) returns (ByFilesResponse);
+	rpc PoDataDataByExcelFile(ByFilesRequest) returns (ByFilesResponse);
+	rpc PoDataSecurityByExcelFile(ByFilesRequest) returns (ByFilesResponse);
+}

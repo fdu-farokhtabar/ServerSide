@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+
+message SendCatalogRequestMessage{
+	string CustomerFullName = 1;
+	string CustomerEmail = 2;
+	string CategorySlug = 3;
+	string WhichPrice = 4;
+}
+message SendCatalogWithLandedPriceRequestMessage{
+	string CustomerFullName = 1;
+	string CustomerEmail = 2;
+	string CategorySlug = 3;
+	double Factor = 4;
+}
+message SendResponseMessage{
+	bool PutInEmailQueue = 1;
+}
+message SendContactUsRequestMessage{
+	string Name = 1;
+	string Family = 2;
+	string Phone = 3;
+	string Email = 4;
+	string Comment = 5;
+}
+message SendAdvancedCatalogRequest{
+	repeated string CategoriesSlug = 1;
+	repeated int32 Prices = 2;
+	repeated string Factories = 3;
+	double LandedPrice = 4;
+	bool JustAvailable = 5;
+	string CustomerFullName = 6;
+	string CustomBodyText = 7;
+	string CustomerEmail = 8;
+	bool IncludeExtraPictures = 9;
+}
+
+service EmailSrv{
+	rpc SendCatalog(SendCatalogRequestMessage) returns (SendResponseMessage);
+	rpc SendCatalogAdvanced(SendAdvancedCatalogRequest) returns (SendResponseMessage);
+	rpc SendCatalogWithLandedPrice(SendCatalogWithLandedPriceRequestMessage) returns (SendResponseMessage);
+	rpc SendContactUs(SendContactUsRequestMessage) returns (SendResponseMessage);
+}

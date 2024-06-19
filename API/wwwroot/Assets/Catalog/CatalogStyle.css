@@ -1,0 +1,49 @@
+﻿@page {
+    margin: 0mm;
+}
+
+body {
+    margin: 0mm;
+    padding: 0mm;
+    background-color: white;
+}
+
+@media print {
+    @page {
+        margin: 0mm;
+    }
+
+    body {
+        margin: 0mm;
+        padding: 0mm;
+        background-color: white;
+    }
+}
+
+.ProductInfoTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .ProductInfoTable td, .ProductInfoTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .ProductInfoTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .ProductInfoTable tr:hover {
+        background-color: #ddd;
+    }
+
+    .ProductInfoTable th {
+        /*padding-top: 12px;*/
+        /*padding-bottom: 12px;*/
+        padding: 4px;
+        text-align: left;
+        background-color: #223f81;
+        color: white;
+    }

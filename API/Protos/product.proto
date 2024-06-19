@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+
+    message ProductResponseMessage
+    {
+        string Id = 1;
+        string Name = 2;
+        string Slug = 3;
+        google.protobuf.DoubleValue Inventory = 4;
+        string ShortDescription = 5;
+        string Description = 6;
+        repeated ProductPriceResponseMessage Prices = 7;
+        google.protobuf.DoubleValue Cube = 8;
+        google.protobuf.DoubleValue W = 9;
+        google.protobuf.DoubleValue D = 10;
+        google.protobuf.DoubleValue H = 11;
+        google.protobuf.DoubleValue Weight = 12;
+        google.protobuf.DoubleValue BoxW = 13;
+        google.protobuf.DoubleValue BoxD = 14;
+        google.protobuf.DoubleValue BoxH = 15;
+        repeated string Securities = 16;
+        string WHQTY = 17;
+        int32 Order = 18;
+        repeated string ImagesUrls = 19;
+        bool IsGroup = 20;
+        repeated string CategoryIds = 21;
+        repeated string Tags =22;
+        repeated string Groups =23;
+        repeated string Factories =24;
+        int32 PiecesCount =25;
+        repeated string ComplexItemPieces =26;
+        int32 ComplexItemPriority =27;
+        string ProductDescription = 28;
+        repeated KeyValue Features = 29;
+        repeated KeyValue PricePermissions = 30;
+        string IsSample = 31;
+        int32 OrderInShop = 32;
+    }
+    message ProductPriceResponseMessage
+    {
+        string Name = 1;
+        google.protobuf.DoubleValue Value = 2;
+    }
+    message ProductsResponseMessage{
+        repeated ProductResponseMessage Products = 1;
+    }
+    message ProductsWithTotalItemsResponseMessage{
+        repeated ProductResponseMessage Products = 1;
+        int32 TotalItems = 2;
+    }
+    message ProductByIdRequestMessage{
+        string Id = 1;
+    }
+    message ProductBySlugRequestMessage{
+        string Slug = 1;
+    }
+    message ProductsByCategoryIdRequestMessage{
+        string CategoryId = 1;
+    }
+    message ProductsByCategoryIdsRequestMessage{
+        repeated string CategoryIds = 1;
+    }
+    message ProductsByCategorySlugRequestMessage{
+        string CategorySlug = 1;
+    }
+    message ProductsByGroupsTagsWithPagingRequestMessage{
+        repeated string Groups = 1;
+        repeated string Tags = 2;
+        int32 PageNumber = 3;
+        int32 PageCount = 4;
+        bool IsAcsOrder = 5;
+    }
+    message KeyValue{
+        string Name = 1;
+        string Value = 2;
+    }
+
+    service ProductSrv{
+        rpc GetAll(google.protobuf.Empty) returns(ProductsResponseMessage);
+        rpc GetByGroupsTagsWithPaging(ProductsByGroupsTagsWithPagingRequestMessage) returns(ProductsWithTotalItemsResponseMessage);
+        rpc GetByCategoryId(ProductsByCategoryIdRequestMessage) returns(ProductsResponseMessage);        
+        rpc GetByCategoryIds(ProductsByCategoryIdsRequestMessage) returns(ProductsResponseMessage);
+        rpc GetByCategorySlug(ProductsByCategorySlugRequestMessage) returns(ProductsResponseMessage);
+        rpc GetByFirstCategory(google.protobuf.Empty) returns(ProductsResponseMessage);
+        
+        rpc GetById(ProductByIdRequestMessage) returns(ProductResponseMessage);
+        rpc GetBySlug(ProductBySlugRequestMessage) returns(ProductResponseMessage);               
+    }

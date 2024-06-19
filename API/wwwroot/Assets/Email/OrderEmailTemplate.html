@@ -1,0 +1,46 @@
+﻿<div style="width:700px;color:black;">
+    <p style="color:black;"><strong>S.O No. {InvoiceNumber} {PoNumber}</strong></p>    
+    <h3 style="color:black;">Dear, {CustomerName}</h3>
+    <p>
+        Thank you for your order. We appreciate your loyalty.
+    </p>
+    <p style="color:black;">
+        "We will verify the stock for these items and will arrange shipment as soon as possible. "
+    </p>
+    <p style="color:black;">
+        <strong>This email is considered as confirmation for shipping the items below </strong>
+    </p>
+    <table style='width:100%;color:black;'>
+        <thead>
+            <tr>
+                <th style='border-bottom: solid black 3px;text-align: center;'>Item Number</th>
+                <th style='border-bottom: solid black 3px;text-align: center;'>Qty</th>
+                <th style='border-bottom: solid black 3px;text-align: center;'>Price</th>
+                <th style='border-bottom: solid black 3px;text-align: center;'>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {OrderTableBody}
+        </tbody>
+    </table>
+    <p>Discount: <strong>{TotalDiscount}</strong></p>
+    <p>Total Price: <strong>{TotalPricesBelow}</strong></p>
+    <p>Total Pieces: {TotalPieces}</p>
+    <p>Total Cubes: {TotalCubes}</p>
+    <p>Total Weight: {TotalWeight}</p>
+    <p>{Description}</p>
+    <p style="color:black;">
+        Please contact our customer service at <a href="tel:9163331718" style="color:black;">916-333-1718</a>, If you have any questions or concerns.
+    </p>
+    <p>
+        We appreciate your business!
+    </p>
+    <p style="color:black;">Sincerely,</p>
+    <img src='https://sepehrsh.com/api/Images/Logo/Email/kian_usa_logo.gif' style="width:75px;height:75px;" alt="KIAN USA">
+    <p style='color:black;margin-bottom:5px;'><strong>KIAN USA</strong></p>
+    <p style='color:black;margin-bottom:5px;margin-top:5px;'><strong>Sales Team</strong></p>
+    <p style='color:black;margin-bottom:5px;margin-top:5px;'><strong>Tel: 916‐333‐1718</strong></p>
+    <p style='color:black;margin-bottom:5px;margin-top:5px;'><strong>Fax: 916‐993‐9883</strong></p>
+    {CurrentDate}
+</div>
+

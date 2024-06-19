@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+import "google/protobuf/wrappers.proto";
+enum PriceType {
+    Fob = 0;
+    Sac = 1;
+    LandedPrice = 2;
+    Sample = 3;
+}
+enum DeliveryType{
+    CustomerForwarder = 0;
+    WillCall = 1;
+    KIANUSA = 2;
+}
+enum TariffType{
+    IORKIAN = 0;
+    IORCustomer = 1;
+}
+message ProductOrder{       
+       string ProductSlug = 1;
+       double Count = 2;
+}
+message OrderRequestMessage{
+        string CustomerUserName = 1;
+        PriceType PriceType = 2;
+        double Cost = 3;
+        DeliveryType Delivery = 4;
+        TariffType Tariff = 5;
+        repeated ProductOrder Orders = 6;
+        string ConfirmedBy = 7;
+        string PoNumber = 8;
+        string Description = 9;
+        string MarketSpecial = 10;
+        google.protobuf.Int32Value CountOfCustomerShareAContainer = 11;
+        bool AddDiscountToSample = 12;
+}
+message OrderResponseMessage{
+    string Message = 1;
+    bool IsError = 2;
+}
+service OrderSrv{
+    rpc SendOrder(OrderRequestMessage) returns(OrderResponseMessage);
+}

@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+    message PoData
+    {
+        string User = 1;
+        string Date= 2;
+        string CustomerPO = 3;
+        string EstimateNumber = 4;
+        string Name= 5;
+        string PONumber = 6;
+        string DueDate = 7;
+        
+        string ItemGroup =8;
+        string Forwarder =9;
+        string IOR = 10;
+        string ShipTo =11;
+        string ShippingCarrier =12;
+        string ContainerNumber = 13;
+        string ETAAtPort = 14;
+
+        google.protobuf.Int32Value FactoryStatus = 15;        
+        string StatusDate = 16;
+        string FactoryContainerNumber = 17;
+        string FactoryBookingDate = 18;
+        string DocumentsSendOutDate = 19;
+
+        google.protobuf.Int32Value ForwarderName = 20;
+        string BookingDate = 21;
+        google.protobuf.DoubleValue Rate = 22;
+        string ETD = 23;
+        string ETA = 24;
+        string PortOfDischarge = 25;
+        google.protobuf.Int32Value DischargeStatus = 26;
+        google.protobuf.Int32Value ShippmentStatus = 27;
+        string ConfirmDate = 28;
+
+        string GateIn = 29;
+        string EmptyDate = 30;
+        string GateOut = 31;
+        string BillDate = 32;        
+        bool FactoryStatusNeedsToHaveReadyToGO = 33;
+        string Note = 34;
+    }
+    message PoGetRequest{
+        bool IsArchive=1;
+    }
+    message PoResponse{
+        repeated PoData ExcelData=1;
+        repeated PoColAccess ColumnsHavePermission = 2;
+    }
+    message PoExcelResponse{
+        string Url = 1;
+    }
+    message PoColAccess{
+        string ColName = 1;
+        bool IsWritable = 2;
+    }
+    message PoDataSave{
+        string PONumber = 1;      
+        google.protobuf.Int32Value FactoryStatus = 2;
+        string FactoryContainerNumber = 3;
+        string DocumentsSendOutDate = 4;
+
+        google.protobuf.Int32Value ForwarderName = 5;
+        string BookingDate = 6;
+        google.protobuf.DoubleValue Rate = 7;
+        string ETD = 8;
+        string ETA = 9;
+        string PortOfDischarge = 10;
+        google.protobuf.Int32Value DischargeStatus = 11;
+        google.protobuf.Int32Value ShippmentStatus = 12;
+        string ConfirmDate = 13;
+
+        string GateIn = 14;
+        string EmptyDate = 15;
+        string GateOut = 16;
+        string BillDate = 17;
+        string Note = 18;
+    }
+    message PoDataSaveRequest{
+        repeated PoDataSave Data = 1;
+    }
+    message PoSaveResponse{
+        string Message = 1;
+        bool IsError = 2;
+        repeated PoSaveResult Results = 3;
+    }
+    message PoSaveResult{
+        string PoNumber = 1;
+        string ConfirmDate = 2;
+        string StatusDate = 3;
+        string BookingDate = 4;
+        string Message = 5;
+        bool FactoryStatusNeedsToHaveReadyToGO = 6;
+        google.protobuf.DoubleValue Rate = 7;
+    }
+    service PoSrv{
+        rpc Get(PoGetRequest) returns(PoResponse);
+        rpc GetExcel(PoGetRequest) returns(PoExcelResponse);
+        rpc Save(PoDataSaveRequest) returns(PoSaveResponse);
+    }
