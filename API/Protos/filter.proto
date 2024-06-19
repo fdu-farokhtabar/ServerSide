@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+import "google/protobuf/empty.proto";
+
+message FilterResponseMessage{
+    string Id = 1;
+    string Name =2;
+    int32  Order =3;
+    repeated string Tags =4;
+    repeated string Groups =5;
+}
+message FiltersResponseMessage{
+    repeated FilterResponseMessage Filters = 1;
+}
+service FilterSrv{
+	rpc GetAll(google.protobuf.Empty) returns (FiltersResponseMessage);
+}

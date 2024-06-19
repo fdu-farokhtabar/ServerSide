@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "API.Services";
+import "google/protobuf/empty.proto";
+
+message GroupResponseMessage{
+    string Id = 1;
+    string Name =2;
+    bool IsVisible = 3;
+    int32  Order =4;
+}
+message GroupsResponseMessage{
+    repeated GroupResponseMessage Groups = 1;
+}
+service GroupSrv{
+	rpc GetAll(google.protobuf.Empty) returns (GroupsResponseMessage);
+}
