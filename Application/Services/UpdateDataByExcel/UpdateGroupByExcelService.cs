@@ -1,14 +1,14 @@
-﻿using KianUSA.Application.Data;
-using KianUSA.Application.Services.UpdateDataByExcel.Helper;
+﻿using Application.Data;
+using Application.Services.UpdateDataByExcel.Helper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace KianUSA.Application.Services.UpdateDataByExcel
+namespace Application.Services.UpdateDataByExcel
 {
-    using KianUSA.Domain.Entity;
+    using Domain.Entity;
     public class UpdateGroupByExcelService
     {
         public async Task Update(Stream stream)

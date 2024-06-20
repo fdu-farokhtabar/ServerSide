@@ -9,22 +9,28 @@
     <None Remove="Protos\catalog.proto" />
     <None Remove="Protos\category.proto" />
     <None Remove="Protos\email.proto" />
+    <None Remove="Protos\filter.proto" />
+    <None Remove="Protos\group.proto" />
     <None Remove="Protos\importdata.proto" />
     <None Remove="Protos\order.proto" />
-    <None Remove="Protos\po.proto" />
+    <None Remove="Protos\Po.proto" />
     <None Remove="Protos\product.proto" />
+    <None Remove="Protos\tutorial.proto" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\account.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\category.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\catalog.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\filter.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\email.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\group.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\importdata.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\order.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\po.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\product.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\tutorial.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
